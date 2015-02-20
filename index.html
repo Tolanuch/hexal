@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Hexal</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> 
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -570,29 +570,35 @@
 
 	<div style="clear: both;"></div>
 </body>
-<!-- <script>
+<script>
 	(function(d)
 	{
 		var slides = d.getElementsByClassName('gallery-checkbox');
-
-		var i = 0, k = 0;
-		for (i; i < 6; i++) {
-			if (slides[i].checked)
-			{
-				k = i;
-				console.log(slides[i]);
-			}
-		}
-		function moveSlides ()
+		moving = function()
 		{
-			slides[k+1].checked = true;
-			if (i==5)
-			{
-				i=0;
+			var i = 0, k = 0;
+			for (i; i < 6; i++) {
+				if (slides[i].checked)
+				{
+					k = i;
+				}
 			}
+			k++;
+			if (k==6) 
+			{
+				k=0;
+			}
+			slides[k].checked=true;	
 		}
-		setInterval(moveSlides, 2000);
-		console.log(slides[i]);
+		var interval = setInterval(moving, 4000);		
+		d.querySelector('.gallery-nav').onmouseover=function()
+		{
+			clearInterval(interval); //зупинка циклічного виконання функції.
+		}
+		d.querySelector('.gallery-nav').onmouseout=function()
+		{
+			interval = setInterval(moving, 4000);
+		}		
 	})(document);
-</script> -->
+</script>
 </html>
